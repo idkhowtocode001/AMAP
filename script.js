@@ -171,7 +171,7 @@ showStores('Fashion');
 
 var map = L.map('map').setView([51.508281956753514, -0.22166609203941642], 16);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+L.tileLayer('https://tile.openstreetmap.bzh/ca/{z}/{x}/{y}.png', {
     minZoom: 0,
 	maxZoom: 20,
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
