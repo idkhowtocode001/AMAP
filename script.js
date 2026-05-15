@@ -70,6 +70,16 @@ let stores = {
             "logo": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Brunei_road_sign_-_Disabled_Parking.svg",
             "location": "51.50926467313368, -0.22081816623627581"
         }
+    },
+    "Emergency": {
+        "Fire Escape 1": {
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/5/57/ISO_7010_E001.svg",
+            "location": "51.5088, -0.2230"
+        },
+        "Fire Escape 2": {
+            "logo": "https://upload.wikimedia.org/wikipedia/commons/5/57/ISO_7010_E001.svg",
+            "location": "51.5068, -0.2205"
+        }
     }
 };
 
@@ -254,7 +264,7 @@ function playBeep() {
     gainNode.connect(audioCtx.destination);
 
     oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(440, audioCtx.currentTime); // A4
+    oscillator.frequency.setValueAtTime(440, audioCtx.currentTime);
     gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
 
     oscillator.start();
