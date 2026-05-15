@@ -218,6 +218,7 @@ addMarker();
 // Popup for accessibility
 const popup = document.getElementById('popup');
 const infoBtn = document.getElementById('info-btn');
+const audioBtn = document.getElementById('audio');
 
 infoBtn.addEventListener('click', () => {
     popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
@@ -238,4 +239,31 @@ ttsbtn.addEventListener('change', () => {
         utterance.text = 'Welcome to the AMAP shopping centre, ' + text;
         speechSynthesis.speak(utterance);
     }
+});
+
+//audio feedback
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playBeep() {
+    if (!audioBtn.checked) return;
+    
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(440, audioCtx.currentTime); // A4
+    gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+
+    oscillator.start();
+    oscillator.stop(audioCtx.currentTime + 0.1);
+}
+
+document.addEventListener('click', () => {
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+    playBeep();
 });
